@@ -2,6 +2,9 @@ import { Component } from 'react';
 import ContactForm from './ContactForm';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
+import styled from 'styled-components';
+
+const Container = styled.div``;
 
 export class App extends Component {
   state = {

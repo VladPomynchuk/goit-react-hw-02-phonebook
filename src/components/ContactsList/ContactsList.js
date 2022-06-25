@@ -1,4 +1,5 @@
 // import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 const ContactsList = ({ data, handleDelete }) => {
   return (
@@ -19,6 +20,11 @@ const ContactsList = ({ data, handleDelete }) => {
       })}
     </ul>
   );
+};
+
+ContactsList.propTypes = {
+  data: PropTypes.array.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default ContactsList;
