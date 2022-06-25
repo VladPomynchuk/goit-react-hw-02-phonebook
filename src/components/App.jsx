@@ -4,7 +4,34 @@ import ContactsList from './ContactsList';
 import Filter from './Filter';
 import styled from 'styled-components';
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-top: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1024px;
+`;
+
+const WrapperBorder = styled.div`
+  padding: 15px;
+  width: 500px;
+  border: 1px solid black;
+`;
+
+const Wrapper = styled.div`
+  padding: 15px;
+  width: 500px;
+`;
+
+const MainTitle = styled.h1`
+  margin: 0px 0px 15px 0px;
+  padding: 0;
+`;
+const Title = styled.h2`
+  margin: 0px 0px 15px 0px;
+  padding: 0;
+`;
 
 export class App extends Component {
   state = {
@@ -50,21 +77,26 @@ export class App extends Component {
     );
 
     return (
-      <>
-        <h1>Phonebook</h1>
-        <ContactForm callback={this.handleSubmit} />
-        <h2>Contacts</h2>
-        <Filter callback={this.handleFilter} value={filter} />
+      <Container>
+        <WrapperBorder>
+          <MainTitle>Phonebook</MainTitle>
+          <ContactForm callback={this.handleSubmit} />
+        </WrapperBorder>
 
-        {filter === '' ? (
-          <ContactsList handleDelete={this.handleDelete} data={contacts} />
-        ) : (
-          <ContactsList
-            handleDelete={this.handleDelete}
-            data={filterContacts}
-          />
-        )}
-      </>
+        <Wrapper>
+          <Title>Contacts</Title>
+          <Filter callback={this.handleFilter} value={filter} />
+
+          {filter === '' ? (
+            <ContactsList handleDelete={this.handleDelete} data={contacts} />
+          ) : (
+            <ContactsList
+              handleDelete={this.handleDelete}
+              data={filterContacts}
+            />
+          )}
+        </Wrapper>
+      </Container>
     );
   }
 }

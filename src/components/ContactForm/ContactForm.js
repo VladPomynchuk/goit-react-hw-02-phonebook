@@ -2,14 +2,23 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
 
-const initialValues = {
-  name: '',
-  number: '',
-};
+const Label = styled.label`
+  display: block;
+  margin-bottom: 10px;
+`;
+
+const Div = styled.div`
+  margin-bottom: 10px;
+`;
 
 const ErrorText = styled.p`
   color: red;
 `;
+
+const initialValues = {
+  name: '',
+  number: '',
+};
 
 const FormError = ({ name }) => {
   return (
@@ -41,20 +50,17 @@ const ContactForm = ({ callback }) => {
       onSubmit={handleSubmit}
     >
       <Form autoComplete="off">
-        <div>
-          <label htmlFor="name">
-            Name
-            <Field type="text" name="name" placeholder="Full name"></Field>
-            <FormError name="name" />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="number">
-            Number
-            <Field type="tel" name="number" placeholder="Phone number"></Field>
-            <FormError name="number" />
-          </label>
-        </div>
+        <Label htmlFor="name">Name</Label>
+        <Div>
+          <Field type="text" name="name" placeholder="Full name"></Field>
+          <FormError name="name" />
+        </Div>
+
+        <Label htmlFor="number">Number</Label>
+        <Div>
+          <Field type="tel" name="number" placeholder="Phone number"></Field>
+          <FormError name="number" />
+        </Div>
         <button type="submit">Add contact</button>
       </Form>
     </Formik>
