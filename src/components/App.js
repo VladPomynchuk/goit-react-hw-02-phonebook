@@ -2,36 +2,13 @@ import { Component } from 'react';
 import ContactForm from './ContactForm';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  padding-top: 60px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1024px;
-`;
-
-const WrapperBorder = styled.div`
-  padding: 15px;
-  width: 500px;
-  border: 1px solid black;
-`;
-
-const Wrapper = styled.div`
-  padding: 15px;
-  width: 500px;
-`;
-
-const MainTitle = styled.h1`
-  margin: 0px 0px 15px 0px;
-  padding: 0;
-`;
-const Title = styled.h2`
-  margin: 0px 0px 15px 0px;
-  padding: 0;
-`;
+import {
+  Container,
+  WrapperBorder,
+  Wrapper,
+  MainTitle,
+  Title,
+} from './App.styled';
 
 export class App extends Component {
   state = {
@@ -47,7 +24,11 @@ export class App extends Component {
   handleSubmit = value => {
     const { name } = value;
 
-    if (this.state.contacts.some(el => el.name === name)) {
+    if (
+      this.state.contacts.some(
+        el => el.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       return alert(`${name} is already in contacts`);
     }
     this.setState(({ contacts }) => {
@@ -87,14 +68,10 @@ export class App extends Component {
           <Title>Contacts</Title>
           <Filter callback={this.handleFilter} value={filter} />
 
-          {filter === '' ? (
-            <ContactsList handleDelete={this.handleDelete} data={contacts} />
-          ) : (
-            <ContactsList
-              handleDelete={this.handleDelete}
-              data={filterContacts}
-            />
-          )}
+          <ContactsList
+            handleDelete={this.handleDelete}
+            data={filterContacts}
+          />
         </Wrapper>
       </Container>
     );

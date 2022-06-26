@@ -1,14 +1,5 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Label = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const Input = styled.input`
-  margin-bottom: 30px;
-`;
+import { Label, Input } from './Filter.styled';
 
 const Filter = ({ callback, value }) => {
   return (
@@ -21,7 +12,7 @@ const Filter = ({ callback, value }) => {
 
 Filter.propTypes = {
   callback: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
 };
 
 export default Filter;

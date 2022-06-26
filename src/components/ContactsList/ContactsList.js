@@ -1,19 +1,6 @@
 // import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Item = styled.li`
-  display: flex;
-  justify-content: space-between;
-  :not(:last-child) {
-    margin-bottom: 10px;
-  }
-`;
-
-const List = styled.ul`
-  padding: 0;
-  margin: 0;
-`;
+import { Item, List } from './ContactsList.styled';
 
 const ContactsList = ({ data, handleDelete }) => {
   return (
@@ -39,7 +26,12 @@ const ContactsList = ({ data, handleDelete }) => {
 };
 
 ContactsList.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
   handleDelete: PropTypes.func.isRequired,
 };
 

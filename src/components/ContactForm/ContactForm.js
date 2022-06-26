@@ -1,21 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import styled from 'styled-components';
+import { Label, Div, ErrorText } from './ContactForm.styled';
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const Div = styled.div`
-  margin-bottom: 10px;
-`;
-
-const ErrorText = styled.p`
-  color: red;
-`;
-
-const initialValues = {
+export const initialValues = {
   name: '',
   number: '',
 };
